@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Payment information</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	<h:outputStylesheet library="css" name="add-student-style.css"  />
+	
+</h:head>
+
+<h:body>
+
+
+			<h2>Payment information</h2>
+
+	
+	<div id="container">
+		<h3></h3>
+	</div>	
+		<h:messages globalOnly="true" />
+
+		
+			
+			<div class="row">
+            <div class="col-xs-12 col-xs-updated">
+
+		<h:form id="form" styleClass="form-horizontal" >
+			
+						<div class="loginform">
+			
+				 <div class="form-group">
+                        <h:outputLabel  value="Please Eneter your card information" styleClass="col-sm-offset-2" />  
+                    </div>
+                    
+           			  
+                    
+                    <!-- Card's info -->
+                    <div class="form-group">
+                        <h:outputLabel  value="Credit/Debit Card Number" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText  required="true" id="card" maxlength="16" converterMessage="Please enter a card number"  validatorMessage="Invalid card number format" requiredMessage="Please enter your card number" value="#{paymentInfo.cardNumber}" styleClass="form-control">
+                             <f:validateLength minimum="16" maximum="16" />
+                             <f:convertNumber integerOnly="true"/>
+						</h:inputText>  <h:message for="card" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="Name on Card" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText  id="nameoncard" required="true" validatorMessage="Invalid Name on card" requiredMessage="Please enter your name on card name" value="#{paymentInfo.nameOnCard}" styleClass="form-control" >
+                            <f:validateRegex pattern="[a-zA-Z ]+" />
+                            </h:inputText>
+                            <h:message for="nameoncard" />
+                        </div>
+                    </div>
+                     
+                    
+                     <div class="form-group">
+                        <h:outputLabel value="CVC" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="cvc" maxlength="3" required="true" requiredMessage="Please enter your zipcode" value="#{paymentInfo.zip}" styleClass="form-control" >
+                             <f:validateLength minimum="3" maximum="3" />
+                             <f:convertNumber integerOnly="true"/>
+						</h:inputText>
+                            <h:message for="cvc" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel  value="Month" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                          <h:selectOneMenu required="true"  requiredMessage="Please select expiration Month" id="month-dropdown" value="#{paymentInfo.month}">
+   						  <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   						  <f:selectItem itemValue="01" itemLabel="Jan"/>
+  						  <f:selectItem itemValue="02" itemLabel="Feb"/>
+  						  <f:selectItem itemValue="03" itemLabel="Mar"/>
+   						  <f:selectItem itemValue="04" itemLabel="April"/>
+   						  <f:selectItem itemValue="05" itemLabel="May"/>
+   						  <f:selectItem itemValue="06" itemLabel="June"/>
+   						  <f:selectItem itemValue="07" itemLabel="July"/>
+   						   <f:selectItem itemValue="08" itemLabel="Aug"/>
+   						   <f:selectItem itemValue="09" itemLabel="Sept"/>
+   						   <f:selectItem itemValue="10" itemLabel="Oct"/>
+   						   <f:selectItem itemValue="11" itemLabel="Nov"/>
+   						   <f:selectItem itemValue="12" itemLabel="Dec"/>
+   						  
+						  </h:selectOneMenu><h:message for="month-dropdown" />
+						   </div>
+                    </div>
+                    
+                     
+                     <div class="form-group">
+                        <h:outputLabel  value="Year" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                          <h:selectOneMenu required="true"  requiredMessage="Please select expiration year" id="year-dropdown" value="#{paymentInfo.year}">
+   						  <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   						  <f:selectItem itemValue="20" itemLabel="20"/>
+  						  <f:selectItem itemValue="21" itemLabel="21"/>
+  						  <f:selectItem itemValue="22" itemLabel="22"/>
+   						  <f:selectItem itemValue="23" itemLabel="23"/>
+   						   <f:selectItem itemValue="24" itemLabel="24"/>
+   						  <f:selectItem itemValue="25" itemLabel="25"/>
+   						   <f:selectItem itemValue="26" itemLabel="26"/>
+   						   <f:selectItem itemValue="27" itemLabel="27"/>
+   					
+						  </h:selectOneMenu><h:message for="year-dropdown" />
+						   </div>
+                    </div>
+                    
+                     
+                    
+                    <!-- Billing info -->
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="First Name" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="firstName" required="true" validatorMessage="Invalid First Name" requiredMessage="Please enter your first name" value="#{paymentInfo.firstName}" styleClass="form-control" >
+                             <f:validateRegex
+							pattern="[a-zA-Z]+" />
+                            </h:inputText>
+                            
+                            <h:message for="firstName" />
+                        
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel value="Last Name" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText  id="lastName" required="true" validatorMessage="Invalid Last Name" requiredMessage="Please enter your last name" value="#{paymentInfo.lastName}" styleClass="form-control" >
+                            <f:validateRegex pattern="[a-zA-Z]+" />
+                            </h:inputText>
+                            <h:message for="lastName" />
+                        
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel  value="Phone" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText  required="true" id="phone" maxlength="10" converterMessage="Please enter a valid phone number"  validatorMessage="Invalid phone number format" requiredMessage="Please enter your phone number" value="#{paymentInfo.phone}" styleClass="form-control">
+                             <f:validateLength minimum="10" maximum="10" />
+                             <f:convertNumber integerOnly="true"/>
+						</h:inputText>  <h:message for="phone" />
+                        </div>
+                    </div>
+                    
+                    
+           			 
+           			<div class="form-group">
+                        <h:outputLabel value="Address Line 1" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="address1" required="true" maxlength="50" requiredMessage="Please enter your address Line 1" value="#{paymentInfo.address1}" styleClass="form-control" /><h:message for="address1" />
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <h:outputLabel value="Address Line 2" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="address2" required="true" maxlength="50" requiredMessage="Please enter your address Line 2" value="#{paymentInfo.address2}" styleClass="form-control" /><h:message for="address2" />
+                        </div>
+                    </div>
+                    
+           			 
+           			 <div class="form-group">
+                        <h:outputLabel value="City" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="usercity" required="true" validatorMessage="Invalid entry format" requiredMessage="Please enter your address" value="#{paymentInfo.city}" styleClass="form-control" >
+                            <f:validateRegex pattern="[a-zA-Z]+" />
+                            </h:inputText><h:message for="usercity" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="State" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="state" required="true" validatorMessage="Invalid entry format" requiredMessage="Please enter your address" value="#{paymentInfo.state}" styleClass="form-control" >
+                       	    <f:validateRegex pattern="[a-zA-Z]+" />
+                            </h:inputText><h:message for="state" />
+                       
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <h:outputLabel value="ZipCode" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <h:inputText id="zipcode" maxlength="5" required="true" requiredMessage="Please enter your zipcode" value="#{paymentInfo.zip}" styleClass="form-control" >
+                             <f:validateLength minimum="5" maximum="5" />
+                             <f:convertNumber integerOnly="true"/>
+						</h:inputText>
+                            <h:message for="zipcode" />
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+           			 <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                        
+                         <h:commandButton value="Next" class="buttons" action="#{dBController.addPaymentInfo(paymentInfo)}" />
+                        
+                            </div>
+                    </div>
+			
+			
+			
+				</div>
+		</h:form>
+		
+		
+		   </div>
+                    </div>
+		
+			
+			
+			
+			
+				
+				
+				
+				
+				
+				
+				
+			 	
+		
+			
+			
+		<!-- 	<h:commandLink value="Next"	action="transaction_paymentInfo_info.xhtml"/> -->
+			
+		
+
+		<div style="clear: both;"></div>
+
+	
+
+
+</h:body>
+</html>

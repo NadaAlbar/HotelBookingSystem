@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Order placement</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	<h:outputStylesheet library="css" name="add-student-style.css"  />
+	
+</h:head>
+
+<h:body>
+
+	
+			<h2>Order placement</h2>
+	
+	
+	<div id="container">
+		<h3></h3></div>
+
+		<h:messages globalOnly="true" />
+
+		
+
+		<h:form id="form" styleClass="form-horizontal" >
+			
+			<div class="loginform">
+				 
+                        <h:outputLabel  value="Place your order" styleClass="col-sm-offset-2" />  
+                    
+                    <h:panelGrid columns="2">
+           	    <h:outputLabel>Room Number:</h:outputLabel> <h:outputLabel>#{room.getRoomNumber()}</h:outputLabel>
+				<h:outputLabel>Hotel Name</h:outputLabel> <h:outputLabel>#{room.getHotelName()}</h:outputLabel> 
+			    <h:outputLabel>Selected guests Number</h:outputLabel> <h:outputLabel>#{registrationBean.guests}</h:outputLabel>  
+			    <h:outputLabel>Check In Date</h:outputLabel> <h:outputLabel>#{registrationBean.checkInDate}</h:outputLabel>
+			    <h:outputLabel>Check Out Date</h:outputLabel> <h:outputLabel>#{registrationBean.checkOutDate}</h:outputLabel>
+			    <h:outputLabel>Type:</h:outputLabel> <h:outputLabel> #{room.type} </h:outputLabel> 
+            	<h:outputLabel>Your total is (after applying %6 tax): </h:outputLabel> <h:outputLabel>$#{registrationBean.total}</h:outputLabel>
+				
+                        	
+                <h:commandButton value="Next" class="buttons" action="#{dBController.addReservation(room,registrationBean)}" />
+                            
+                       
+                 
+			
+			
+		
+			</h:panelGrid>
+			     </div>
+		</h:form>
+		
+		
+		
+			
+			
+		<!-- 	<h:commandLink value="Next"	action="transaction_paymentInfo_info.xhtml"/> -->
+			
+		
+
+		<div style="clear: both;"></div>
+
+	
+
+		
+</h:body>
+</html>

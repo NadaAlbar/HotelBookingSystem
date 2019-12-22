@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Reservation Details</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	
+	
+</h:head>
+
+<h:body>
+
+	
+			<h2>Reservations Details</h2>
+	
+		<div class="loginform">
+	
+	<div id="container">
+		<h3></h3>
+		<h:messages globalOnly="true" />
+
+		<h:form id="form" style="margin-top: 10px;" >
+			<h:panelGrid columns="2">
+		
+				<h:outputLabel>Room Number:</h:outputLabel> <h:outputLabel>#{room.roomNumber}</h:outputLabel>
+				<h:outputLabel>Hotel Name</h:outputLabel> <h:outputLabel>#{room.hotelName}</h:outputLabel> 
+			    <h:outputLabel>Maximum number of guests allowed </h:outputLabel> <h:outputLabel>#{room.guests}</h:outputLabel>  
+			    <h:outputLabel>Type:</h:outputLabel> <h:outputLabel> #{room.type} </h:outputLabel> 
+            	<h:outputLabel>Price per night</h:outputLabel> <h:outputLabel>$#{room.price}</h:outputLabel>
+            	<h:outputLabel>Total nights</h:outputLabel> <h:outputLabel>#{registrationBean.totalNights()}</h:outputLabel>
+            	<h:outputLabel>Your total is (before tax): </h:outputLabel> <h:outputLabel>$#{registrationBean.TotalPrice(room.price)}</h:outputLabel>
+            	<h:outputLabel>Your total is (after applying %6 tax): </h:outputLabel> <h:outputLabel>$#{registrationBean.TotalPriceAfterTax(room.price)}</h:outputLabel>
+				
+				 <h:inputHidden value="#{room.id}" />
+				
+			 	
+			 <h:commandButton class="buttons" value="Next" action="customer_info"/>
+		
+			
+			
+		<!-- 	<h:commandLink value="Next"	action="transaction_customer_info.xhtml"/> -->
+			
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+	
+</div>
+	</div>	
+</h:body>
+</html>

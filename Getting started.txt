@@ -1,0 +1,17 @@
+Sarah Alshhrani, saa187@pitt.edu
+Bashaer Halawani, bah102@pitt.edu
+Nada Albar, naa87@pitt.edu
+
+
+Getting started
+This project was created using Eclipse IDE for Enterprise Java Developers and MYSQLWorkbench.
+1. Import project to eclipse.
+2. Go to the project folder-> WebContent -> home.xhtml.
+3. Right click on home.xhtml, then Run as--> Run on Server--> Tomcat v8.5.
+4. Choose City, number of guests check in/out dates from the lists provided. 
+5. Click on "Find" to view available hotel rooms available.
+6. A list of available rooms will be shown. Select the room
+7. Detailed information about the selected room will be shown
+8. Click next to complete the transaction by entering debit/credit card information 
+And billing address.
+9. Then click next to confirm the reservation. 

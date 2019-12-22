@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+<f:metadata>
+  <f:event type="preRenderView" listener="#{dBController.resultRooms(registrationBean.city,registrationBean.guests, registrationBean.checkInDate, registrationBean.checkOutDate)}"/>
+</f:metadata>
+
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+ 
+   
+	 <h:outputScript library="js" name="formatDatePicker.js" />
+	 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+	 <h:outputStylesheet library="css" name="bootstrap.min.css" />
+	 <h:outputStylesheet library="css" name="style.css"  />
+	 
+    <title>Hotel Booking System</title>
+    <style type="text/css">
+        .col-xs-updated {        
+            width: 92% !important;
+        }
+    </style>
+</h:head>
+
+<h:body>
+<div class="w3-container">
+<h1>
+Booking System
+</h1>
+</div>
+<br></br>
+<center>
+<div class="loginform">
+    <div class="container">
+        <div class="nav navbar-nav">
+            <div class="navbar-brand"></div>
+        </div>
+        
+         <!-- ROW 1 Starts  -->
+        <div class="row">
+            <div class="col-xs-12 col-xs-updated">
+                <h:form id="FindRooms" styleClass="form-horizontal">
+                    <div class="form-group">
+                    
+                        <h:outputLabel  value="Please Select city and number of guests" styleClass="col-sm-offset-2" />  
+                    </div>
+                
+                 <div class="form-group">
+                        <h:outputLabel  value="City" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                          <h:selectOneMenu required="true"  requiredMessage="Please select city" id="city-dropdown" value="#{registrationBean.city}">
+   						  <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   						  <f:selectItem itemValue="NewYork" itemLabel="NewYork"/>
+  						  <f:selectItem itemValue="Pittsburgh" itemLabel="Pittsburgh"/>
+  						  <f:selectItem itemValue="Cleveland" itemLabel="Cleveland"/>
+   						  <f:selectItem itemValue="Washington" itemLabel="Washington"/>
+   						  <f:selectItem itemValue="Los Angeles" itemLabel="Los Angeles"/>
+   						  <f:selectItem itemValue="Las Vegas" itemLabel="Las Vegas"/>
+   						  <f:selectItem itemValue="Chicago" itemLabel="Chicago"/>
+   						   <f:selectItem itemValue="Miami" itemLabel="Miami"/>
+   						   <f:selectItem itemValue="Orlando" itemLabel="Orlando"/>
+   						    <f:selectItem itemValue="Denver" itemLabel="Denver"/>
+   						  
+						  </h:selectOneMenu><h:message for="city-dropdown" />
+						   </div>
+                    </div>
+                   
+                   
+                    <div class="form-group">
+                        <h:outputLabel value="Guests numbers:" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                          <h:selectOneMenu required="true" requiredMessage="Please select number of guests" id="guests-dropdown" value="#{registrationBean.guests}">
+   						   <f:selectItem itemValue="#{null}" itemLabel="--select--" />
+   						  <f:selectItem itemValue="1" itemLabel="1"/>
+  						  <f:selectItem itemValue="2" itemLabel="2"/>
+  						  <f:selectItem itemValue="3" itemLabel="3"/>
+   						  <f:selectItem itemValue="4" itemLabel="4"/>
+   						   <f:selectItem itemValue="5" itemLabel="5"/>
+						  </h:selectOneMenu> <h:message for="guests-dropdown" />
+						   </div>
+                    </div>
+                    
+                    
+                    
+                     <h:outputScript target="head" >
+   $ = jQuery;
+       
+      $("myform:enddate").change(function () {
+    	    var startDate = document.getElementById("myform:startdate").value;
+    	    var endDate = document.getElementById("myform:enddate").value;
+
+    	    if ((Date.parse(startDate) >= Date.parse(endDate))) {
+    	       alert("end date should be greater than Start date");
+    	        document.getElementById("myform:enddate").value = "onChange";
+    	    }
+    	}); 
+    	
+    	
+    	
+    function validateD(element1, element2) {
+    var $elementa = $(element1);
+    var $elementb = $(element2);
+    
+    
+     var startDate = document.getElementById("indate").value;
+     var endDate = document.getElementById("outdate").value;
+    
+    
+    	  if ((Date.parse(startDate) >= Date.parse(endDate))) {
+    	      
+    	        document.getElementById("temp3").innerHTML = "end date should be after Start date";
+    	        document.getElementById("FindRooms:findbtn").disabled = true;
+    	       
+    	        
+    	        }else { document.getElementById("FindRooms:findbtn").disabled = false;}
+}  //end validate ()
+    	
+       </h:outputScript>        
+       
+       
+       
+              
+               <div class="form-group">
+                        <h:outputLabel value="Check In Date" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">
+                            <input type="date"  id="indate"  onChange="validateD( this, outdate)" jsf:value="#{registrationBean.checkInDate}" required="required"   title="Enter or choose a date."/>
+       
+  
+       
+                        </div>
+                    </div>
+                       
+                    <div class="form-group">
+                        <h:outputLabel value="Check Out Date" styleClass="control-label col-sm-2" />
+                        <div class="col-sm-10">     
+                            <input type="date" id="outdate"  onChange="validateD(indate, this)"   jsf:value="#{registrationBean.checkOutDate}" required="required"   title="Enter or choose a date."/>
+      
+      <h:message for="outdate" />
+     
+      
+      
+       
+          <div id="temp3"></div>  
+          
+          
+          
+      
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                  
+                    <div class="form-group">
+                        
+                       <div class="col-sm-offset-2 col-sm-10">
+                        
+                            <h:commandButton class="buttons"  id="findbtn" value="Find" disabled="true"  action="dBController.resultRooms(registrationBean.city,registrationBean.guests, registrationBean.checkInDate, registrationBean.checkOutDate)"  />
+                     
+                        </div>
+                    </div>
+                   
+                     </h:form>
+                      </div>
+                    </div>
+                    </div>
+                   
+                    <!-- ROW 1 ENDS  -->
+                    
+                    
+                     <!-- ROW 2 STARTS  -->
+                    
+                    <div  class="row"  >
+                     <div class="col-xs-12 col-xs-updated">
+                     
+           			 <h:form  styleClass="form-horizontal"   >
+           			 
+           			  <div class="form-group"> <!-- Rooms Table -->
+           			  
+           			  <h:outputLabel value="Rooms List" styleClass="control-label col-sm-2" />
+           			   <div class="col-sm-10">
+           			   
+           			    <h:messages globalOnly="true" />
+           			   
+						
+			<h:dataTable value="#{dBController.rooms}" var="tempRoom"
+				styleClass="demo-table" 
+				headerClass="demo-table-header"
+				rowClasses="demo-table-odd-row,demo-table-even-row">
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">HotelName</f:facet>
+
+					<!--  the value for each row -->
+					#{tempRoom.hotelName}
+				</h:column>
+
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Room Number</f:facet>
+
+					<!--  the value for each row -->
+					#{tempRoom.roomNumber}
+				</h:column>
+
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Room Type</f:facet>
+
+					<!--  the value for each row -->
+					#{tempRoom.type}
+				</h:column>
+				
+				
+				
+
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Number of Guests</f:facet>
+
+					<!--  the value for each row -->
+					#{tempRoom.guests}
+				</h:column>
+				
+				
+				<h:column>
+					<!-- the column header -->
+					<f:facet name="header">Price Per Night</f:facet>
+
+					<!--  the value for each row -->
+					#{tempRoom.price}
+				</h:column>
+
+
+				<h:column>
+					
+					<f:facet name="header">Action</f:facet>
+
+					
+					<h:commandLink value="Select Room"
+						action="#{dBController.loadRoom(tempRoom.id)}"/> <!-- check in / out dates !  -->
+					
+					
+				</h:column>
+
+			</h:dataTable>
+           			    </div>
+           			  </div>
+           			 </h:form>
+           			
+           			
+           			</div>
+           			 </div>
+           			 <!-- ROW 2 ENDS  -->
+           			 
+           			 
+           			 
+                    
+                    </div> <!-- Container's ENDS  -->
+                    
+          
+          
+         </center>
+   
+                    
+               
+</h:body>
+</html>

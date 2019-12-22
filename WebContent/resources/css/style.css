@@ -1,0 +1,97 @@
+html,body{
+	 
+	padding:0px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	 background:url("#{resource['img:3.jpg']}") no-repeat center center fixed; 
+	 -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.demo-table {   
+	border-collapse:collapse;
+	border-bottom:1px solid #0c261b;
+	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	width:72%;
+}
+ 
+.demo-table-header { 	/* table page one*/
+	border-bottom:3px solid #0c261b;
+	background:none repeat scroll 0 0 #0c261b;
+	padding:10px;
+	color: #cfbb9e;
+}
+ 
+.demo-table-odd-row {
+	border-top:3px solid #0c261b;
+	background:none repeat scroll 0 0 #FFFFFFF;
+	text-align:center;
+}
+ 
+.demo-table-even-row {
+	border-top:3px solid #0c261b;
+	background:none repeat scroll 0 0 #0c261b;
+	text-align:center;
+	color: #cfbb9e;
+}
+
+#wrapper {width: 100%; margin-top: 0px; }
+#header {width: 70%; background: #0775d3; margin-top: 0px; padding:15px 0px 15px 15px;}
+
+#container {width: 100%; margin:auto}
+#container h3 {color: #000;}
+#container form#add input { background: #50acd6; border: 1px solid #666; border-radius: 5px; color: #fff; padding: 8px; font-size: 16px;}
+#container form#find {margin-top:30px;}
+#container form#find label {font-size: 13px; color: #000; float:left; margin-right: 20px;}
+#container form#find input {border: 1px solid #ccc; border-radius: 3px; padding: 5px 10px; width: 86%;}
+#container #content {margin-top: 20px;}
+
+
+	 .loginform {
+
+	margin-left:15px; margin-right:15px;
+    height: auto;
+	margin-top: 30px;
+	text-align: left;
+	border: 2px solid #5C342B;
+	padding: 20px;
+	
+		 background-color: #cfbb9e;
+		 opacity: 0.9;
+		 position: center;
+  }
+  
+  		 h1{
+	font-family: 'Sedgwick Ave';
+	border: #5C342B;
+	padding: 15px;
+	 opacity: 0.9;
+	 text-align: center;
+	 background-color: #0c261b;
+	  background-size: cover;
+	color: #cfbb9e;
+	 font-size:70pt;
+	 
+}
+h2{
+	font-family: 'Sedgwick Ave';
+	border: #5C342B;
+	padding: 15px;
+	 opacity: 0.9;
+	 text-align: center;
+	 background-color: #0c261b;
+	  background-size: cover;
+	color: #cfbb9e;
+	 font-size:30pt;
+}
+
+		 .buttons {
+	font-family: 'Sedgwick Ave';
+	font-size: 20px;
+	border-radius: 8px;
+	background-color: #0c261b;
+	margin-top: 30px;
+	color: #cfbb9e;
+			
+}
